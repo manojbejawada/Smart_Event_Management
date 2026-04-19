@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEES — Smart Event Experience System</title>
+  <meta name="description" content="AI-powered event orchestration platform. Improve crowd movement, reduce waiting time, and enable real-time coordination in large events through advanced spatial intelligence." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization" async defer></script>
+</head>
+<body>
+  <div id="app">
+    <!-- LANDING PAGE -->
+    <div id="page-landing" class="page active">
+      <!-- Nav -->
+      <nav class="landing-nav">
+        <div class="nav-logo">
+          <span class="logo-icon">✦</span>
+          <span class="logo-text">SEES</span>
+        </div>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#about">About</a>
+          <a href="#api">API Docs</a>
+          <a href="#integrations">Integrations</a>
+        </div>
+        <div class="nav-actions">
+          <button class="btn-primary" onclick="openApp()">Get Started</button>
+        </div>
+        <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()">☰</button>
+      </nav>
+
+      <!-- Hero -->
+      <section class="hero-section">
+        <div class="hero-badge">AI-POWERED EVENT ORCHESTRATION</div>
+        <h1 class="hero-title">Smart Event<br /><span class="gradient-text">Experience System</span></h1>
+        <p class="hero-subtitle">Improving crowd movement, reducing waiting time, and enabling real-time coordination in large events through advanced spatial intelligence.</p>
+        <div class="hero-actions">
+          <button class="btn-primary btn-lg" onclick="openApp()">Enter Dashboard</button>
+          <button class="btn-ghost btn-lg">View Case Studies</button>
+        </div>
+        <div class="hero-visual">
+          <div class="heatmap-preview">
+            <canvas id="hero-canvas" width="700" height="300"></canvas>
+            <div class="heatmap-overlay-text">LIVE CROWD DENSITY MAP</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section class="features-section" id="features">
+        <h2 class="section-title">Orchestrating<br /><em>Every Moment</em></h2>
+        <p class="section-subtitle">Leverage our high-fidelity sensor network and AI models to transform event management from reactive to predictive.</p>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon crowd-icon">👥</div>
+            <h3>Crowd Density Monitoring</h3>
+            <p>Utilize thermal imaging and computer vision to monitor crowd flow with 99.8% accuracy without compromising attendee privacy.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon queue-icon">⏱</div>
+            <h3>Queue Time Prediction</h3>
+            <p>Dynamic wait time predictions for concession and entrance points directly to attendees apps.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon nav-icon">🧭</div>
+            <h3>Smart Navigation</h3>
+            <p>Routing that adapts to live conditions at your venue to keep the venue free-flowing.</p>
+          </div>
+          <div class="feature-card feature-card-alert">
+            <div class="feature-icon alert-icon">🚨</div>
+            <h3>Emergency Alerts</h3>
+            <p>Instant multi-channel notifications and dynamic exit routing based on the specific location of an incident.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section class="about-section" id="about">
+        <div class="about-content">
+          <h2 class="section-title">The Intelligence Behind<br /><em>Memorable Experiences</em></h2>
+          <p>SEES was born from a simple observation: large-scale events are wonders of human connection but logistical nightmares. We believe technology should work silently in the background to ensure safety and fluidity.</p>
+          <div class="about-pillars">
+            <div class="pillar">
+              <span class="pillar-icon">🔒</span>
+              <div>
+                <strong>Privacy First Architecture</strong>
+                <p>Data processing happens locally at the edge. We never transmit raw video to external servers.</p>
+              </div>
+            </div>
+            <div class="pillar">
+              <span class="pillar-icon">⚡</span>
+              <div>
+                <strong>Live Latency Infrastructure</strong>
+                <p>Sub-second updates to the core engine mean the data you're seeing is less than 400ms old, not minutes old.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stats-panel">
+          <div class="stat-card stat-large">
+            <div class="stat-num">45%</div>
+            <div class="stat-label">Wait Time<br />Reduction</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">500k+</div>
+            <div class="stat-label">Daily Users<br />Managed</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="cta-section">
+        <h2>Ready to transform<br /><em>your venue?</em></h2>
+        <p>Join leading stadiums and convention centers already using the next generation of event management.</p>
+        <div class="cta-actions">
+          <button class="btn-primary btn-lg" onclick="openApp()">Schedule a Demo</button>
+          <button class="btn-ghost btn-lg">Contact Sales</button>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="landing-footer">
+        <div class="footer-brand">
+          <div class="nav-logo">
+            <span class="logo-icon">✦</span>
+            <span class="logo-text">SEES</span>
+          </div>
+          <p>Revolutionizing large-scale coordination through the power of spatial intelligence and predictive AI.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <strong>Product</strong>
+            <a href="#">Features</a>
+            <a href="#">Pricing</a>
+            <a href="#">API Docs</a>
+            <a href="#">Integrations</a>
+          </div>
+          <div class="footer-col">
+            <strong>Company</strong>
+            <a href="#">About Us</a>
+            <a href="#">Blog</a>
+            <a href="#">Careers</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2024 SEES Intelligence Systems. All rights reserved.</span>
+          <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- APP SHELL (Dashboard, Live Status, Alerts, Admin) -->
+    <div id="page-app" class="page">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <div class="nav-logo">
+            <span class="logo-icon">✦</span>
+            <span class="logo-text">SEES</span>
+          </div>
+        </div>
+        <!-- Sidebar User Profile Removed -->
+
+        <nav class="sidebar-nav">
+          <a href="#" class="nav-item active" id="nav-dashboard" onclick="showTab('dashboard')">
+            <span class="nav-icon">⊞</span>
+            <span>Dashboard</span>
+          </a>
+          <a href="#" class="nav-item" id="nav-live" onclick="showTab('live')">
+            <span class="nav-icon">📡</span>
+            <span>Live Status</span>
+          </a>
+          <a href="#" class="nav-item" id="nav-alerts" onclick="showTab('alerts')">
+            <span class="nav-icon">⚠</span>
+            <span>Alerts</span>
+            <span class="nav-badge">3</span>
+          </a>
+          <a href="#" class="nav-item" id="nav-analytics" onclick="showTab('analytics')">
+            <span class="nav-icon">📈</span>
+            <span>Analytics</span>
+          </a>
+          <a href="#" class="nav-item" id="nav-admin" onclick="showTab('admin')">
+            <span class="nav-icon">👤</span>
+            <span>Admin</span>
+          </a>
+        </nav>
+        <div class="system-load-card">
+          <div class="load-label">System Load</div>
+          <div class="load-bar">
+            <div class="load-fill" id="load-fill" style="width: 42%"></div>
+          </div>
+          <div class="load-pct" id="load-pct">42%</div>
+        </div>
+        <button class="sidebar-back-btn" onclick="goLanding()">← Back to Home</button>
+      </aside>
+
+      <!-- Top Bar -->
+      <header class="app-topbar">
+        <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+        <div class="topbar-search">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search gates, zones, alerts..." id="topbar-search-input" />
+        </div>
+        <div class="topbar-actions">
+          <button class="topbar-icon-btn" onclick="showTab('alerts')" title="Alerts">
+            <span>🔔</span>
+            <span class="alert-dot"></span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="app-main">
+
+        <!-- ===== DASHBOARD TAB ===== -->
+        <div id="tab-dashboard" class="tab-content active">
+          <div class="page-header">
+            <h1>System Overview</h1>
+            <p>Real-time crowd intelligence and safety metrics.</p>
+          </div>
+
+          <div class="stats-row">
+            <div class="stat-widget stat-blue">
+              <div class="stat-label-sm">TOTAL CROWD</div>
+              <div class="stat-value" id="stat-crowd">12,482</div>
+              <div class="stat-trend">📈 +12% from last hour</div>
+            </div>
+            <div class="stat-widget stat-red">
+              <div class="stat-label-sm">ACTIVE ALERTS</div>
+              <div class="stat-value" id="stat-alerts">03</div>
+              <div class="stat-trend critical">◆ Critical response required</div>
+            </div>
+            <div class="stat-widget stat-teal">
+              <div class="stat-label-sm">AVG WAIT TIME</div>
+              <div class="stat-value" id="stat-wait">08<span class="stat-unit">m</span></div>
+              <div class="stat-trend">⏱ Optimization active</div>
+            </div>
+            <div class="stat-widget stat-purple">
+              <div class="stat-label-sm">ACTIVE FLOWS</div>
+              <div class="stat-value" id="stat-flows">14</div>
+              <div class="stat-trend">Optimized flow active</div>
+            </div>
+          </div>
+
+          <!-- Gate Analytics Table -->
+          <div class="card">
+            <div class="card-header">
+              <h2>Gate Entry Analytics</h2>
+              <button class="btn-outline" onclick="exportCSV()">Export CSV ↓</button>
+            </div>
+            <div class="table-wrapper">
+              <table class="data-table" id="gate-table">
+                <thead>
+                  <tr>
+                    <th>GATE ID</th>
+                    <th>CROWD COUNT</th>
+                    <th>CAPACITY</th>
+                    <th>STATUS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>North Main Alpha</strong></td>
+                    <td>3,402</td>
+                    <td><div class="capacity-bar"><div class="cap-fill" style="width:68%;background:#7c6af7"></div></div></td>
+                    <td><span class="badge badge-moderate">MODERATE</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>West Plaza Beta</strong></td>
+                    <td>1,120</td>
+                    <td><div class="capacity-bar"><div class="cap-fill" style="width:22%;background:#00e5c0"></div></div></td>
+                    <td><span class="badge badge-low">LOW</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>South Gate Gamma</strong></td>
+                    <td>2,890</td>
+                    <td><div class="capacity-bar"><div class="cap-fill" style="width:58%;background:#f56565"></div></div></td>
+                    <td><span class="badge badge-high">HIGH</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>East Dock Delta</strong></td>
+                    <td>452</td>
+                    <td><div class="capacity-bar"><div class="cap-fill" style="width:9%;background:#00e5c0"></div></div></td>
+                    <td><span class="badge badge-low">LOW</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Alert Control -->
+          <div class="card alert-control-card">
+            <div class="card-header">
+              <span class="card-icon">📢</span>
+              <h2>Alert Control</h2>
+            </div>
+            <p class="card-desc">Broadcast critical safety messages or status updates to all event personnel and electronic signage systems across the venue.</p>
+            <div class="form-group">
+              <label>ALERT SCOPE</label>
+              <div class="toggle-group">
+                <button class="toggle-btn active" id="scope-all" onclick="setScope('all')">All Gates</button>
+                <button class="toggle-btn" id="scope-sec" onclick="setScope('security')">Security Only</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>MESSAGE</label>
+              <textarea id="alert-message" placeholder="Enter alert message..."></textarea>
+            </div>
+            <button class="btn-primary btn-full" onclick="sendAlert()">SEND ALERT</button>
+            <div class="alert-footer">
+              <span id="last-sent">Last sent: 12m ago</span>
+              <span class="system-online">● System Online</span>
+            </div>
+          </div>
+
+          <!-- Camera Feeds -->
+          <div class="card">
+            <div class="card-header">
+              <h2>Camera Feeds</h2>
+              <button class="btn-outline" onclick="showTab('live')">View All →</button>
+            </div>
+            <div class="camera-grid">
+              <div class="camera-card camera-active" onclick="showTab('live')">
+                <div class="camera-preview" style="background: linear-gradient(135deg,#1a0a3e,#3d1a7a,#1a0a3e)">
+                  <canvas id="cam-canvas-1" width="280" height="140"></canvas>
+                </div>
+                <div class="camera-info">
+                  <strong>Main Arena Alpha</strong>
+                  <div class="camera-tags"><span class="tag-live">Live Stream</span><span class="tag-activity high-act">High Activity</span></div>
+                </div>
+              </div>
+              <div class="camera-card" onclick="showTab('live')">
+                <div class="camera-preview" style="background: linear-gradient(135deg,#0a1a2e,#1a3a5e,#0a1a2e)">
+                  <canvas id="cam-canvas-2" width="280" height="140"></canvas>
+                </div>
+                <div class="camera-info">
+                  <strong>East Perimeter Hub</strong>
+                  <div class="camera-tags"><span class="tag-static">Static View</span><span class="tag-activity">No Alerts</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== LIVE STATUS TAB ===== -->
+        <div id="tab-live" class="tab-content">
+          <div class="page-header">
+            <h1>Live Crowd Status</h1>
+            <p>Real-time telemetry from stadium entry points. System health: Optimal.</p>
+            <div class="refresh-badge" id="refresh-badge">● AUTO-REFRESHING IN <span id="refresh-count">5</span>S</div>
+          </div>
+
+          <!-- AI Prediction Card -->
+          <div class="ai-pulse-card">
+            <div class="ai-pulse-header">
+              <span class="ai-icon">✦</span>
+              <strong>AI Flow Prediction</strong>
+            </div>
+            <p>Predicting a 15% surge at North Gates within the next 20 minutes due to transit arrivals. Recommend opening Overflow Gate 04.</p>
+            <button class="btn-primary" onclick="deploySupport()">Deploy Support</button>
+          </div>
+
+          <!-- Gate Cards -->
+          <div class="gates-list" id="gates-list">
+            <!-- populated by JS -->
+          </div>
+
+          <!-- Spatial Map -->
+          <div class="card spatial-card">
+            <div class="hot-zone-badge">📡 REAL-TIME GLOBAL VENUES</div>
+            <div id="google-map" style="width: 100%; height: 350px; border-radius: 12px; margin-bottom: 16px;"></div>
+            <div class="spatial-info">
+              <strong>Global Event Network</strong>
+              <p>Monitoring crowd dynamics across 10 premium partner venues. Select a marker to view local telemetry.</p>
+              <a href="#" class="link-arrow" onclick="showTab('dashboard')">View Detailed Analytics →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== ALERTS TAB ===== -->
+        <div id="tab-alerts" class="tab-content">
+          <div class="page-header">
+            <h1>Event Alerts</h1>
+            <p>Real-time critical monitoring and system notifications for SEES infrastructure.</p>
+          </div>
+
+          <div class="alerts-list" id="alerts-list">
+            <!-- populated by JS -->
+          </div>
+
+          <!-- AI Insight Pulse -->
+          <div class="ai-pulse-card ai-maintenance">
+            <div class="ai-pulse-header">
+              <span class="ai-icon">✦</span>
+              <span class="pulse-label">AI INSIGHT PULSE</span>
+            </div>
+            <h3>Predictive Maintenance Suggestion</h3>
+            <p>Based on the recent power grid fluctuations and cooling threshold warnings, SEES Intelligence predicts a 15% risk of thermal throttling in Server Rack B within the next 4 hours. Recommend pre-emptive cooling boost.</p>
+            <button class="btn-primary" onclick="executeMaintenance()">Execute Maintenance Routine</button>
+          </div>
+        </div>
+
+        <!-- ===== ANALYTICS TAB ===== -->
+        <div id="tab-analytics" class="tab-content">
+          <div class="page-header">
+            <h1>Analytics</h1>
+            <p>Historical trends and predictive insights for your event.</p>
+          </div>
+          <div class="analytics-grid">
+            <div class="card analytics-card">
+              <h2>Crowd Flow Over Time</h2>
+              <canvas id="analytics-chart" width="600" height="250"></canvas>
+            </div>
+            <div class="card analytics-card">
+              <h2>Gate Throughput Distribution</h2>
+              <canvas id="donut-chart" width="300" height="300"></canvas>
+            </div>
+            <div class="card analytics-card full-width">
+              <h2>Hourly Wait Times</h2>
+              <canvas id="bar-chart" width="600" height="200"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== ADMIN TAB ===== -->
+        <div id="tab-admin" class="tab-content">
+          <div class="page-header">
+            <h1>Admin Panel</h1>
+            <p>System configuration, user management, and infrastructure health.</p>
+          </div>
+          <div class="admin-grid">
+            <div class="card admin-card">
+              <h2>System Health</h2>
+              <div class="health-rows">
+                <div class="health-row">
+                  <span>API Gateway</span>
+                  <div class="health-bar-wrap"><div class="health-bar" style="width:98%;background:#00e5c0"></div></div>
+                  <span class="health-pct">98%</span>
+                </div>
+                <div class="health-row">
+                  <span>Sensor Network</span>
+                  <div class="health-bar-wrap"><div class="health-bar" style="width:91%;background:#7c6af7"></div></div>
+                  <span class="health-pct">91%</span>
+                </div>
+                <div class="health-row">
+                  <span>AI Engine</span>
+                  <div class="health-bar-wrap"><div class="health-bar" style="width:87%;background:#f56565"></div></div>
+                  <span class="health-pct">87%</span>
+                </div>
+                <div class="health-row">
+                  <span>Database</span>
+                  <div class="health-bar-wrap"><div class="health-bar" style="width:99%;background:#00e5c0"></div></div>
+                  <span class="health-pct">99%</span>
+                </div>
+              </div>
+            </div>
+            <!-- User Management Card Removed -->
+            <div class="card admin-card full-width">
+              <h2>Configuration</h2>
+              <div class="config-grid">
+                <div class="config-item">
+                  <label>Crowd Density Threshold (%)</label>
+                  <input type="range" min="50" max="100" value="80" id="density-thresh" oninput="updateConfig()" />
+                  <span id="density-val">80%</span>
+                </div>
+                <div class="config-item">
+                  <label>Alert Notification Delay (s)</label>
+                  <input type="range" min="0" max="30" value="5" id="alert-delay" oninput="updateConfig()" />
+                  <span id="delay-val">5s</span>
+                </div>
+                <div class="config-item">
+                  <label>Auto-Refresh Interval (s)</label>
+                  <input type="range" min="3" max="30" value="5" id="refresh-interval" oninput="updateConfig()" />
+                  <span id="refresh-val">5s</span>
+                </div>
+                <div class="config-item">
+                  <label>AI Prediction Confidence (%)</label>
+                  <input type="range" min="60" max="99" value="85" id="ai-confidence" oninput="updateConfig()" />
+                  <span id="confidence-val">85%</span>
+                </div>
+              </div>
+              <button class="btn-primary" onclick="saveConfig()" style="margin-top:1.5rem">Save Configuration</button>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Mobile Bottom Nav -->
+      <nav class="mobile-bottom-nav">
+        <button onclick="showTab('dashboard')" id="mob-dashboard">
+          <span>⊞</span><span>Dash</span>
+        </button>
+        <button onclick="showTab('alerts')" id="mob-alerts">
+          <span>⚠</span><span>Alerts</span>
+        </button>
+        <button onclick="showTab('analytics')" id="mob-analytics">
+          <span>📈</span><span>Data</span>
+        </button>
+        <button onclick="showTab('admin')" id="mob-admin">
+          <span>👤</span><span>Profile</span>
+        </button>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
