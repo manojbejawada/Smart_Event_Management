@@ -51,7 +51,7 @@ const Toast = ({ toasts, removeToast }) => (
           <div style={{ fontWeight: '700', fontSize: '0.85rem', marginBottom: '3px' }}>{t.title}</div>
           <div style={{ fontSize: '0.78rem', color: 'var(--muted)', lineHeight: '1.4' }}>{t.message}</div>
         </div>
-        <button onClick={() => removeToast(t.id)} style={{ background: 'none', border: 'none', color: 'var(--muted)', cursor: 'pointer', padding: '2px', flexShrink: 0 }}>
+        <button aria-label="Close notification" onClick={() => removeToast(t.id)} style={{ background: 'none', border: 'none', color: 'var(--muted)', cursor: 'pointer', padding: '2px', flexShrink: 0 }}>
           <X size={14} />
         </button>
       </div>
@@ -247,6 +247,7 @@ const AppShell = ({ activeTab, onTabChange, venues, selectedVenue, onVenueChange
           <label style={{ fontSize: '10px', letterSpacing: '1.5px', color: 'var(--accent)', display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>SYSTEM NODE</label>
           <div style={{ position: 'relative' }}>
             <select 
+              aria-label="Select Venue"
               value={selectedVenue?.id || ''} 
               onChange={(e) => onVenueChange(e.target.value)}
               style={{ 
@@ -292,7 +293,7 @@ const AppShell = ({ activeTab, onTabChange, venues, selectedVenue, onVenueChange
 
       <div className="app-content-wrapper">
         <header className="app-topbar">
-          <button className="sidebar-toggle" onClick={() => setSidebarOpen(!isSidebarOpen)}>
+          <button aria-label="Toggle sidebar menu" className="sidebar-toggle" onClick={() => setSidebarOpen(!isSidebarOpen)}>
             <Menu size={24} />
           </button>
           <div className="topbar-search">
@@ -300,7 +301,7 @@ const AppShell = ({ activeTab, onTabChange, venues, selectedVenue, onVenueChange
             <input type="text" placeholder="Search venues, alerts, or staff..." />
           </div>
           <div className="topbar-actions">
-            <button className="topbar-icon-btn">
+            <button aria-label="View notifications" className="topbar-icon-btn">
               <Bell size={20} />
               <span className="alert-dot"></span>
             </button>
